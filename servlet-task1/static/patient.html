@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<form action="patient" method="post">
+    <div class="p-3 mb-2 bg-danger-subtle text-danger-emphasis">
+    <h2 class="text-center text-primary mb-8">Patient Information</h2>
+    <div class="form-floating mb-3">
+  FirstName:<input type="text" name="firstName"/><br>
+    </div>
+    <div class="form-floating">
+  LastName:<input type="text" name="lastName"/>
+    </div><br>
+    <div>
+  Age:<input type="number" name="age"/>
+    </div><br>
+    <div>
+  Gender:<select name="gender">
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select></div><br>
+    <div>
+    Status:<input type="text" name="status"/></div><br>
+    <div>
+    ContactNo:<input type="text" name="contactNo"/></div><br>
+    <div>
+    Email:<input type="email" name="email"/></div><br>
+    <div>
+    Disease:<input type="text" name="disease"/></div><br>
+    <div>
+    BloodGroup:<input type="text" name="bloodgroup"/></div><br>
+    <div>
+    AdmissionDate:<input type="date" name="date"/></div><br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+
+</body>
+</html>
+

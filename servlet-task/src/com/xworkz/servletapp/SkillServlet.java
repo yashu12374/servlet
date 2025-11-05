@@ -24,6 +24,18 @@ public class SkillServlet extends GenericServlet {
         String exp = servletRequest.getParameter("exp");
         String frameworks = servletRequest.getParameter("frameworks");
         String otherskill = servletRequest.getParameter("otherskill");
+
+        System.out.println(name);
+        System.out.println(email);
+        System.out.println(primaryskill);
+        System.out.println(secondaryskill);
+        System.out.println(database);
+        System.out.println(idk);
+        System.out.println(ui);
+        System.out.println(technologies);
+        System.out.println(exp);
+        System.out.println(frameworks);
+        System.out.println(otherskill);
     }
 
     @Override

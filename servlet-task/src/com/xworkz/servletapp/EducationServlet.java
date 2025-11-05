@@ -11,7 +11,7 @@ public class EducationServlet extends GenericServlet {
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         System.out.println("Running service education servlet...");
-        String studentname = servletRequest.getParameter("student name");
+        String studentname = servletRequest.getParameter("studentname");
         String schoolname = servletRequest.getParameter("schoolname");
         String yearofpassout = servletRequest.getParameter("yearofpassout");
         String percetage = servletRequest.getParameter("percetage");
@@ -29,6 +29,23 @@ public class EducationServlet extends GenericServlet {
         String yearofpassout3 = servletRequest.getParameter("yearofpassout3");
         String percetage3 = servletRequest.getParameter("percetage3");
 
+        System.out.println(studentname);
+        System.out.println(schoolname);
+        System.out.println(yearofpassout);
+        System.out.println(percetage);
+        System.out.println(studentname1);
+        System.out.println(collegename1);
+        System.out.println(yearofpassout1);
+        System.out.println(percetage1);
+        System.out.println(studentname2);
+        System.out.println(collegename2);
+        System.out.println(yearofpassout2);
+        System.out.println(percetage2);
+        System.out.println(stream);
+        System.out.println(studentname3);
+        System.out.println(collegename3);
+        System.out.println(yearofpassout3);
+        System.out.println(percetage3);
     }
 
     @Override

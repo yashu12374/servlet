@@ -21,6 +21,15 @@ public class PersonalServlet extends GenericServlet {
         String address = servletRequest.getParameter("address");
         String status = servletRequest.getParameter("status");
 
+        System.out.println(name);
+        System.out.println(date);
+        System.out.println(age);
+        System.out.println(mobileNo);
+        System.out.println(email);
+        System.out.println(gender);
+        System.out.println(address);
+        System.out.println(status);
+
     }
 
     @Override

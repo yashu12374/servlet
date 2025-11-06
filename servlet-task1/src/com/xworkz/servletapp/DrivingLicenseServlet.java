@@ -3,6 +3,8 @@ package com.xworkz.servletapp;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 @WebServlet(urlPatterns = "/driving",loadOnStartup = 1)
 public class DrivingLicenseServlet extends GenericServlet {
 
@@ -31,6 +33,10 @@ public class DrivingLicenseServlet extends GenericServlet {
         System.out.println(issuedate);
         System.out.println(licenceissued);
         System.out.println(authorized);
+
+        servletResponse.setContentType("text/html");
+        PrintWriter writer = servletResponse.getWriter();
+        writer.println("Data saved successfully...,"+ name +" : "+ relation +" : "+ address +" : "+ date +" : "+ education +" : "+ bloodgroup +" : " + issuedate + ":" + licenceissued + ":" + authorized);
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.xworkz.servletapp;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 @WebServlet(urlPatterns = "/buyer",loadOnStartup = 1)
 public class BuyerFormServlet extends GenericServlet {
 
@@ -33,6 +35,11 @@ public class BuyerFormServlet extends GenericServlet {
         System.out.println(approved);
         System.out.println(lendername);
         System.out.println(pricerange);
+
+        servletResponse.setContentType("text/html");
+        PrintWriter writer = servletResponse.getWriter();
+        writer.println("Data saved successfully....," +name+ " : " +address+ " : " +email+ " : " +phoneNo+ " : "
+                +reason+ " : " +buyer+ " : " +sell+ " : " +approved+ " : " +lendername+ " : " +pricerange);
     }
     @Override
     public void init(ServletConfig config) throws ServletException {

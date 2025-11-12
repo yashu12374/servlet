@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Commerce Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+<div class="card shadow p-3 mb-5 bg-body rounded">
+
+  <h2 class="text-center text-danger mb-4">Add New Product</h2>
+
+  <form action="product">
+
+    <div class="mb-3">
+      <label class="form-label">Product ID</label>
+      <input type="text" class="form-control w-60" name="productId" placeholder="Enter product ID">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product Name</label>
+      <input type="text" class="form-control w-60" name="productname" placeholder="Enter product name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product Type</label>
+      <select class="form-control w-60" name="producttype">
+        <option>Select Product Type</option>
+        <option>Electronics</option>
+        <option>Fashion and Apparel</option>
+        <option>Home and Kitchen</option>
+        <option>Beauty and Personal Care</option>
+        <option>Toys</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Brand</label>
+      <input type="text" class="form-control w-60" name="brand" placeholder="Enter brand name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product Price</label>
+      <input type="text" class="form-control w-60" name="price" placeholder="Enter product price">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product Quantity</label>
+      <input type="number" class="form-control w-60" name="quantity" placeholder="Enter product quantity">
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary px-4">Add Product</button>
+    </div>
+  </form>
+</div>
+</div>
+</body>
+</html>

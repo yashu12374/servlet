@@ -3,6 +3,7 @@ package com.xworkz.servletapp;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,7 @@ public class BloodBookingServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String patientName = req.getParameter("patientName");
         String age = req.getParameter("age");
@@ -26,6 +27,15 @@ public class BloodBookingServlet extends HttpServlet {
         String hospitalName = req.getParameter("hospitalName");
         String location = req.getParameter("location");
         String contactNumber = req.getParameter("contactNumber");
+
+        Cookie[] cookies = req.getCookies();
+        if(cookies == null || cookies.length<1){
+            throw new IllegalArgumentException("cookie is there go to index page and create cookie");
+        }else {
+            for (Cookie cookie:cookies){
+                System.out.println("time name of the cookie is "+cookie.getName()+"the value of cookie is"+cookie.getValue());
+            }
+        }
 
         System.out.println(patientName);
         System.out.println(age);

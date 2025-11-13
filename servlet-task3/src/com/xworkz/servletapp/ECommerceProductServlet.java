@@ -3,6 +3,7 @@ package com.xworkz.servletapp;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +18,7 @@ public class ECommerceProductServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String productId = req.getParameter("productId");
         String productname = req.getParameter("productname");
@@ -26,6 +26,15 @@ public class ECommerceProductServlet extends HttpServlet {
         String brand = req.getParameter("brand");
         String price = req.getParameter("price");
         String quantity = req.getParameter("quantity");
+
+        Cookie[] cookies = req.getCookies();
+        if(cookies == null || cookies.length<1){
+            throw new IllegalArgumentException("cookie is there go to index page and create cookie");
+        }else {
+            for (Cookie cookie:cookies){
+                System.out.println("time name of the cookie is "+cookie.getName()+"the value of cookie is"+cookie.getValue());
+            }
+        }
 
         System.out.println(productId);
         System.out.println(productname);

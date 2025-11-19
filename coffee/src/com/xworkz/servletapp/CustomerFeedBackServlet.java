@@ -1,5 +1,8 @@
 package com.xworkz.servletapp;
 
+import DTO.FeedBackDTO;
+import service.FeedBackImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +25,10 @@ public class CustomerFeedBackServlet extends HttpServlet {
         req.setAttribute("comments",comments);
         req.setAttribute("rating",rating);
 
+        FeedBackDTO feedBackDTO = new FeedBackDTO(name,email,comments,rating);
+        System.out.println("FeedBackDTO-->"+feedBackDTO);
+
+        FeedBackImpl feedBack = new FeedBackImpl();
         req.getRequestDispatcher("FeedBackResult.jsp").forward(req,resp);
     }
 }

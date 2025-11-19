@@ -1,5 +1,7 @@
 package com.xworkz.servletapp;
 
+import DTO.CustomerDTO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,8 @@ public class CustomerServlet extends HttpServlet {
         req.setAttribute("quantity",quantity);
         req.setAttribute("payment",payment);
 
+        CustomerDTO customerDTO = new CustomerDTO(name,mobile,flavour,quantity,payment);
+        System.out.println("CustomerDTO-->"+customerDTO);
         req.getRequestDispatcher("CustomerResult.jsp").forward(req,resp);
     }
 }

@@ -16,8 +16,6 @@
         <p><strong>Farmer:${farmer}</strong> </p>
         <p><strong>Location:${location}</strong> </p>
 
-
-        <h3 class="text-primary">Total Cost:${total}</h3>
     </div>
 </div>
 

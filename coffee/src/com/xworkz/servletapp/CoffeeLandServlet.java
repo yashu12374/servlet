@@ -1,8 +1,5 @@
 package com.xworkz.servletapp;
 
-import DTO.CoffeeLandDTO;
-import service.CoffeeServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,12 +24,6 @@ public class CoffeeLandServlet extends HttpServlet {
          req.setAttribute("expense",expense);
          req.setAttribute("profit",profit);
          req.setAttribute("fertilizer",fertilizer);
-
-         CoffeeLandDTO coffeeLandDTO = new CoffeeLandDTO(size,plants,yield,expense,profit,fertilizer);
-         System.out.println("CoffeeLandDto-->"+coffeeLandDTO);
-
-         CoffeeServiceImpl coffeeService = new CoffeeServiceImpl();
-         //coffeeService.validateAndSave(coffeeLandDTO);
 
          req.getRequestDispatcher("CoffeeLandResult.jsp").forward(req,resp);
 

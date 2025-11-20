@@ -16,7 +16,7 @@
         <p><strong>Price:${price}</strong> </p>
         <p><strong>Franchise:${franchise}</strong> </p>
         <p><strong>Owner:${owner}</strong> </p>
-        <p><strong>GST No:${gst}</strong> </p>
+        <p><>GST No:${gst}</strong> </p>
     </div>
 </div>
 </body>

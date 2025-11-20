@@ -144,11 +144,10 @@ public class SurveyServlet extends HttpServlet {
             req.setAttribute("shareHolding", shareHolding);
             req.setAttribute("successMessage","Data is saved successfully");
         }catch (DataInValidException e){
-            System.out.println("Data valid");
-
             System.err.println("Data Invalid");
             req.setAttribute("errorMessage","Data is not saved successfully");
         }
+
         req.getRequestDispatcher("SurveyResult.jsp").forward(req,resp);
 
 

@@ -23,6 +23,7 @@ public class SurveyImpl implements SurveyService {
         String occupation = surveyDto.getOccupatation();
         int age = surveyDto.getAge();
         long adharno = surveyDto.getAdharno();
+        String nativePlace = surveyDto.getNativePlace();
 
         // Validate Name
         if (name == null || name.length() < 3) {
@@ -32,11 +33,11 @@ public class SurveyImpl implements SurveyService {
             System.out.println("Valid name");
         }
 
-        if (occupation == null || name.length() < 3) {
-            System.out.println("Invalid name");
+        if (occupation == null || occupation.length() < 3) {
+            System.out.println("Invalid occupation");
             valid = false;
         } else {
-            System.out.println("Valid name");
+            System.out.println("Valid occupation");
         }
 
         // Validate Age
@@ -53,6 +54,14 @@ public class SurveyImpl implements SurveyService {
         } else {
             System.out.println("Invalid Aadhaar");
             valid = false;
+        }
+
+        //Validate nativePlace
+        if (nativePlace == null || nativePlace.length() < 5) {
+            System.out.println("Invalid nativePlace");
+            valid = false;
+        } else {
+            System.out.println("Valid nativePlace");
         }
 
         // If validation fails → throw exception

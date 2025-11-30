@@ -29,8 +29,9 @@ public class SweetUpdate {
             System.out.println("rowsAffected :"+rowAffected2);
             int rowAffected3=statement.executeUpdate(sql4);
             System.out.println("rowsAffected :"+rowAffected3);
-    } catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 }
-}
+

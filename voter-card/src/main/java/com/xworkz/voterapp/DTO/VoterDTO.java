@@ -25,6 +25,10 @@ public class VoterDTO implements Serializable,Comparable {
         this.address = address;
     }
 
+    public VoterDTO() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

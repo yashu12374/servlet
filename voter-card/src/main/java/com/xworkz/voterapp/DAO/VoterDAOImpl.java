@@ -5,25 +5,28 @@ import com.xworkz.voterapp.DTO.VoterDTO;
 import lombok.SneakyThrows;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-public class VoterDAOImpl implements VoterDAO{
+public class VoterDAOImpl implements VoterDAO {
 
     private static final String sql = "insert into voter_card(voterName,fatherName,age,gender,address)Values(?,?,?,?,?)";
+
     @Override
     public boolean save(VoterDTO voterDTO) {
 
-        try(Connection connection = DriverManager.getConnection(DBConstants.URL.getPro(),DBConstants.USERNAME.getPro(),DBConstants.PASSWORD.getPro())){
+        try (Connection connection = DriverManager.getConnection(DBConstants.URL.getPro(), DBConstants.USERNAME.getPro(), DBConstants.PASSWORD.getPro())) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,voterDTO.getVoterName());
-            preparedStatement.setString(2,voterDTO.getFatherName());
-            preparedStatement.setInt(3,voterDTO.getAge());
-            preparedStatement.setString(4,voterDTO.getGender());
-            preparedStatement.setString(5,voterDTO.getAddress());
+            preparedStatement.setString(1, voterDTO.getVoterName());
+            preparedStatement.setString(2, voterDTO.getFatherName());
+            preparedStatement.setInt(3, voterDTO.getAge());
+            preparedStatement.setString(4, voterDTO.getGender());
+            preparedStatement.setString(5, voterDTO.getAddress());
 
             int row = preparedStatement.executeUpdate();
-            System.out.println("Row update: " +row);
+            System.out.println("Row update: " + row);
 
             return row > 0;
 
@@ -31,9 +34,10 @@ public class VoterDAOImpl implements VoterDAO{
             e.printStackTrace();
         }
         return false;
-        }
-        @Override
-        public boolean isDuplicate(VoterDTO voterDTO) {
+    }
+
+    @Override
+    public boolean isDuplicate(VoterDTO voterDTO) {
 
         String checkQuery = "select count(*) from voter_card where voterName = ?";
 
@@ -82,7 +86,7 @@ public class VoterDAOImpl implements VoterDAO{
 
             ResultSet rs = statement.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 System.out.println("Result row found...");
 
                 String name = rs.getString("voterName");
@@ -105,8 +109,75 @@ public class VoterDAOImpl implements VoterDAO{
         return Optional.empty();
     }
 
+    @Override
+    @SneakyThrows
+    public List<VoterDTO> findByAddress(String address) {
+
+        System.out.println("Running findByAddress in VoterDAO: " + address);
+
+        String addressSql = "SELECT * FROM voter_card WHERE address=?";
+
+        try (Connection connection = DriverManager.getConnection(
+                DBConstants.URL.getPro(),
+                DBConstants.USERNAME.getPro(),
+                DBConstants.PASSWORD.getPro());
+             PreparedStatement preparedStatement = connection.prepareStatement(addressSql)) {
+
+            preparedStatement.setString(1, address);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<VoterDTO> voterDTOS = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                String voterName = resultSet.getString("voterName");
+                String fatherName = resultSet.getString("fatherName");
+                int age = resultSet.getInt("age");
+                String gender = resultSet.getString("gender");
+                String addressDB = resultSet.getString("address");
+
+                VoterDTO voterDTO = new VoterDTO(voterName, fatherName, age, gender, addressDB);
+
+                voterDTOS.add(voterDTO);
+
+                System.out.println("voterDTO : " + voterDTO);
+            }
+
+            System.out.println("Total voterDTOS from DAO: " + voterDTOS.size());
+
+            return voterDTOS;
+        }
+    }
+
+    @Override
+    @SneakyThrows
+    public void update(VoterDTO voterDTO) {
+
+        String updateSql = "update voter_card set voterName=? ,fatherName=? ,age=?,gender=?,address=? where voterName=?";
+        System.out.println("updateSQL (dto): " + voterDTO);
+
+        try (Connection connection = DriverManager.getConnection(DBConstants.URL.getPro(), DBConstants.USERNAME.getPro(), DBConstants.PASSWORD.getPro());
+             PreparedStatement preparedStatement = connection.prepareStatement(updateSql)) {
+
+            System.out.println("starting to update voterDTO");
+            preparedStatement.setString(1, voterDTO.getVoterName());
+            preparedStatement.setString(2, voterDTO.getFatherName());
+            preparedStatement.setInt(3, voterDTO.getAge());
+            preparedStatement.setString(4, voterDTO.getGender());
+            preparedStatement.setString(5, voterDTO.getAddress());
+
+            // IMPORTANT: set the WHERE parameter (6). Since voterName is readonly in form,
+            // using the same voterName is fine for the WHERE clause.
+            preparedStatement.setString(6, voterDTO.getVoterName());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Updated voterDTO rowsAffected: " + rowsAffected);
+        }
+    }
+
     static {
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

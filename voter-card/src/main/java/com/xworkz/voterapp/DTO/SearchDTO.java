@@ -11,8 +11,10 @@ import lombok.ToString;
 public class SearchDTO {
 
     private String voterName;
+    private String address;
 
-    public SearchDTO(String voterName) {
+    public SearchDTO() {
         this.voterName = voterName;
     }
+
 }

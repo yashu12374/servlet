@@ -7,12 +7,39 @@
 </head>
 <body class="bg-light">
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container-fluid">
+    <a class="navbar-brand" href="#">Voter Card Application</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.jsp">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="voter">Voter-Form</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="VoterSearch.jsp">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="SearchAddress.jsp">Search Address</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</nav>
+
 <<div class="container mt-5">
     <div class="d-flex justify-content-center mt-5">
         <div class=" center card shadow-lg p-4 "style="width: 650px">
             <h3 class="text-center mb-4">Voter Card Search</h3>
 
-            <form action="search" method="get">
+            <form action="edit" method="post">
 
                 <div class="mb-3">
                     <label class="form-label">Voter Name</label>

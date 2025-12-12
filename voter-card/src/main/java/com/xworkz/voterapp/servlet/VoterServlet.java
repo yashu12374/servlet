@@ -34,12 +34,7 @@ public class VoterServlet extends HttpServlet {
         try {
             VoterDTO voterDTO = new VoterDTO(voterName, fatherName, Integer.parseInt(age), gender, address);
             voterService.validateAndSave(voterDTO);
-            req.setAttribute("voterName", voterName);
-            req.setAttribute("fatherName", fatherName);
-            req.setAttribute("age", age);
-            req.setAttribute("gender", gender);
-            req.setAttribute("address", address);
-
+            req.setAttribute("dto",voterDTO);
             req.getRequestDispatcher("VoterFormResult.jsp").forward(req, resp);
             req.setAttribute("Success Message", "Data is saved successfully");
         } catch (DataInValidException | DataDuplicationException e) {

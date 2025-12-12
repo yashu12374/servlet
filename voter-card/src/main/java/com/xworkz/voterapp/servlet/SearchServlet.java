@@ -1,6 +1,5 @@
 package com.xworkz.voterapp.servlet;
 
-import com.xworkz.voterapp.Constants.DBConstants;
 import com.xworkz.voterapp.DTO.SearchDTO;
 import com.xworkz.voterapp.DTO.VoterDTO;
 import com.xworkz.voterapp.service.VoterService;
@@ -12,10 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
 import java.util.Optional;
 @WebServlet(urlPatterns = "/search",loadOnStartup = 1)
-public class EditServlet extends HttpServlet {
+public class SearchServlet extends HttpServlet {
 
     private VoterService voterService = new VoterServiceImpl();
     @Override
@@ -28,14 +26,12 @@ public class EditServlet extends HttpServlet {
                 req.getRequestDispatcher("VoterSearch.jsp").forward(req, resp);
                 return;
             }
-            // Read voterName from form
+
             String voterName = req.getParameter("voterName");
             System.out.println("voterName : " + voterName);
 
-            // Create Search DTO
-            SearchDTO searchDTO = new SearchDTO(voterName);
+            SearchDTO searchDTO = new SearchDTO();
 
-            // Call service
             Optional<VoterDTO> optionalVoterDTO = this.voterService.findByVoterName(searchDTO);
 
             if (optionalVoterDTO.isPresent()) {
